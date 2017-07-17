@@ -1,0 +1,38 @@
+{% extends "base_blog.html"  %}
+{% block title %}Search{% endblock %}
+{% block content %}
+	{% if "query" in request.GET %}
+		<h1>Posts containing "{{ cd.query }}"</h1>
+		<h3>Found {{ total_results }} result{{ total_results|pluralize}}</h3>
+		<br>
+		<br>
+		{% for result in results %}
+			{% with post=result.object %}
+				<h4><a href="{{ post.get_absolute_url }}">{{ post.title }}</a></h4>
+				{{ post.content|safe|truncatewords:400 }}
+			{% if request.user.is_superuser or request.user.is_staff or request.user.is_authenticated %}
+	         <a href="{% url 'webno:edit' id=post.id %}" class="btn btn-default btn-sm">Edit</a>
+	         <a href="{% url 'webno:delete' id=post.id %}" class="confirm-delete btn btn-danger btn-sm">Delete</a>
+      		{% endif %}
+         	<a href="{{post.get_absolute_url}}" class="btn btn-default btn-sm">More..</a>
+
+				<hr>
+			{% endwith %}
+			{% empty %}
+				<p>There are no results for your query.</p>
+
+		{% endfor %}
+
+		
+
+
+			<p><a href="{% url "webno:post_search" %}">Search again</a></p>
+		{% else %}
+			<h1>Search for posts</h1>
+			<form action="." method="Get">
+			{{ form.as_p }}
+			<input type="submit" value="Search">
+			</form>
+
+	{% endif %}
+{% endblock %}

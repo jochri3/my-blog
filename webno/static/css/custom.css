@@ -1,0 +1,291 @@
+@font-face {
+    font-family: 'Fjalla One', sans-serif ;
+    src: url(../font/font.css);
+}
+html {
+    background-color: #fff
+}
+h1, h2,h3,h4,h5,h6 a {
+  font-family: 'Fjalla One', sans-serif;
+  color: #2bbc8a
+}
+
+#similar-title h4{
+    font-family: 'Fjalla One', sans-serif;
+    color: #2bbc8a 
+}
+body{
+  background-color: #1e1e1e;
+  overflow-x: hidden;
+} 
+p{
+	color: #ffffff;
+	
+}
+ 
+
+#content p span{
+    color: #fff
+}
+
+hr {
+    
+    border-top: 1px solid #2a2929;
+}
+
+a:focus, a:hover {
+    color: #2bbc8a;
+
+text-decoration:none;
+
+}
+
+a {
+    color: #2bbc8a;
+    text-decoration: none;
+}
+
+small{
+  color :#5E9D75;
+}
+
+.navbar-inverse .navbar-brand {
+    color: #2bbc8a;
+    font-size: 25px
+}
+
+.navbar-inverse .navbar-nav > li > a {
+    color: #2bbc8a;
+}
+
+#similar > a{
+    color: #ffffff
+}
+
+
+.btn-danger {
+    color: #2bbc8a;
+    background-color: #333;
+    border-color: #333;
+}
+
+.btn-default {
+    color: #2bbc8a;
+    background-color: #333;
+    border-color: #333;
+    padding-right: 33px;
+    
+    
+
+}
+.side_bar{
+    background-color: #444
+}
+
+.row {
+    color: #ffffff;
+    margin-left: 98;
+}
+
+.jumbotron {
+    padding-top: 48px;
+    padding-bottom: 48px;
+    background-color: #2bbc8a;
+}
+.jumbotron p {
+    margin-bottom: 15px;
+    font-size: 21px;
+    font-weight: 200;
+    color: #333;
+    text-align: center;
+}
+
+
+.jumbotron h1 {
+    font-size: 63px;
+    text-align: center;
+}
+
+
+#search {
+    padding: 0px;
+    margin-right: 127px;
+    margin-top: 13px;
+    font-weight: bold;
+}
+
+#search input[type="search"] {
+    -webkit-appearance: none;
+    background-color: transparent;
+    color: #2bbc8a;
+    border-radius: 10%;
+    border: transparent;
+    font-size: 16px;
+    
+    width: 212px;
+}
+
+#search input[type="search"]:hover {
+    -webkit-appearance: none;
+    background-color: transparent;
+    color: #2bbc8a;
+    border-radius: 10%;
+    border: transparent;
+    font-size: 16px;
+    
+    width: 212px;
+}
+
+
+button, input, select, textarea {
+    font-size: inherit;
+    line-height: inherit;
+    font-family: inherit;
+    font-size: 16px;
+    background-color: transparent;
+    color: #2bbc8a;
+    border-color: transparent;
+    }
+
+
+b, a {
+    font-weight: initial;
+
+}
+
+
+
+
+label {
+    display: inline-block;
+    max-width: 100%;
+    margin-bottom: 5px;
+    font-weight: 700;
+    color: #2bbc8a;
+}
+
+input, select, textarea {
+    font-size: inherit;
+    line-height: inherit;
+    font-family: inherit;
+    font-size: 16px;
+    background-color: #222;
+    color: #2bbc8a;
+    border-color: transparent;
+    border-radius: 6px;
+    line-height: 20px
+    }
+
+form i input {
+    margin-left: 136px;
+    font-size: 20px;
+    padding: 0px 14px 3px;
+}
+
+input[type="submit"]{
+    margin-left: 136px;
+    font-size: 20px;
+    padding: 0px 14px 3px;
+}
+
+.pagination li span {
+    border-top-right-radius: 4px;
+    border-bottom-right-radius: 4px;
+    background-color: #222;
+    border-color: darkslategray;
+    color: aquamarine;
+}
+
+
+.pagination li span:hover {
+    border-top-right-radius: 4px;
+    border-bottom-right-radius: 4px;
+    background-color: #222;
+    border-color: darkslategray;
+    color: aquamarine;
+}
+
+
+
+.alert-success {
+    background-color: #2bbc8a;
+    width: 80%;
+    font-size: 26px;
+    color: #1e1e1e;
+    margin-left: 149px;
+    text-align: center;
+}
+
+#comment_body p{
+    text-align: left;
+    font-size: 20px;
+}
+
+
+
+#comment_name {
+    font-size: 20px;
+    color: #00955C;
+}
+
+
+.footer-basic-centered {
+    background-color: #292c2f;
+    box-shadow: 0 1px 1px 0 rgba(0, 0, 0, 0.12);
+    box-sizing: border-box;
+    width: 100%;
+    text-align: center;
+    font: normal 18px sans-serif;
+    padding: 45px;
+    margin-top: 80px;
+    position: inherit;
+    
+}
+b {
+    font-weight: 700;
+    color: #fff;
+}
+
+li ,strong{
+    color: white;
+    overflow: hidden;
+}
+
+
+
+.pagination > li > a {
+    border-top-right-radius: 4px;
+    border-bottom-right-radius: 4px;
+    background-color: #222;
+    border-color: darkslategray;
+    color: aquamarine;
+}
+
+.pagination > li > a:focus, .pagination > li > a:hover, .pagination > li > span:focus, .pagination > li > span:hover {
+    z-index: 2;
+    color: aquamarine;
+    background-color: #222;
+    border-color: darkslategray;
+}
+
+.tags {
+    color: #2EBF8D;
+    text-align: left;
+    font-weight: bold;
+}
+
+.latest_posts ul{
+    color: #fff
+}
+
+.navbar-inverse .navbar-nav > li > a {
+    color: #2bbc8a;
+    font-size: large;
+}
+
+.fa-2x {
+    font-size: 2em;
+    padding: 0px 28px;
+}
+
+

@@ -1,0 +1,110 @@
+{% extends "base_blog.html"  %}
+
+{% block head %}
+	{{block.super}}
+{% endblock head %}
+
+ {% block content%}
+
+ <div class="row">
+    <div class="col-lg-10"> 
+        <p class="body ">
+        	<h2>
+           		{{post.title}}
+            </h2>
+            <br>
+           <div id="content">
+               <p >
+               		{{post.content|safe}}
+               </p>
+           </div>
+        <p>
+        <small>
+       		{{post.updatetime}} | creator : {{post.owner}}
+          <p>
+        </small>
+        <br>
+            <b class="pull-left"><a id="share" href="{% url "webno:post_share" post.id %}">
+            <h4><i class="fa fa-share-alt">  Share this post</i></h4></a></b>
+            <br>
+            <br>
+                    <h4 id="similar-title">Similar posts</h4>
+                    {% for post in similar_posts %}
+                    <p id="similar">
+                    <a  href="{{ post.get_absolute_url }}">{{ post.title }}</a>
+                    </p>
+                    {% empty %}
+                    There are no similar posts yet.
+                    {% endfor %}
+
+            <br>
+            <br>
+            
+
+            
+
+        {% with comments.count as total_comments %}
+           
+ <h2>{{ total_comments }} comment{{ total_comments|pluralize }}</h2>
+        {% endwith %}
+       
+        {% for comment in comments %}
+        <div class="comments_area">
+            <div class="comment">
+              <ul>
+                <li><p class="info pull-left">Comment {{ forloop.counter }} by <b id="comment_name"> {{ comment.name }}</b> {{ comment.created }}</p></li>
+                <br>
+                <li id ='comment_body'>{{ comment.body|linebreaks }}</li>
+              </ul>
+            </div>
+            <hr>
+        </div>
+        <br>
+        {% empty %}
+            <p>There are no comments yet.</p>
+        {% endfor %}
+        
+        {% if new_comment %}
+            <h2>Your comment has been added.</h2>
+        {% else %}
+            <h2><i class="fa fa-commenting" aria-hidden="true">  Add a new comment</i></h2>
+            <form action="" method="POST">
+                {{ comment_form.as_p }}
+                {% csrf_token %}
+                <i><input type="submit" value="Add comment"></i>
+            </form>
+
+        {%  endif %}
+       
+    </div>
+
+     
+
+</div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+</p>
+
+
+ {% endblock content %}

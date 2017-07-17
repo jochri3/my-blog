@@ -1,0 +1,227 @@
+{% load blog_tags %}
+{% load static %}
+<html>
+<head>
+    <title>
+        {% block head %}
+          webno
+        {% endblock %}
+    </title>
+
+ 
+
+<link href="{% static 'font/font.css' %}" rel="stylesheet">
+<!-- Latest compiled and minified CSS -->
+<link rel="stylesheet" href="{% static 'css/bootstrap.min.css' %}">
+<link rel="stylesheet" href="{% static 'css/custom.css' %}">
+<link rel="stylesheet" href="{% static 'css/demo.css' %}">
+<link rel="stylesheet" href="{% static 'css/footer-basic-centered.css' %}">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+
+
+<style>
+
+
+</style>
+
+
+</head>
+
+
+<body>
+
+{% block navbar %}
+
+ <nav class="navbar navbar-inverse">
+  <div class="container-fluid">
+    <div class="navbar-header">
+      
+<a class="navbar-brand" href="{% url 'webno:list' %}"><i class="fa fa-code " aria-hidden="true"> DevBlog</i> </a>
+    </div>
+
+    <ul class="nav navbar-nav navbar-right">
+    {% block search%}
+    <li><a href="{% url 'webno:post_search' %}"></span><i class="fa fa-search" aria-hidden="true"> <l>Search</l> </i></a></li>
+    {% endblock search%}
+    
+     
+
+      {% if request.user.is_superuser or request.user.is_staff or request.user.is_authenticated %}
+
+         <li><a href="/admin"></span><l>Dashboard</l> </a></li>
+
+      {% else %}
+         <li><a href="/admin"></span><i class="fa fa-sign-in" aria-hidden="true"> <l>Login</l></i>
+ </a></li>
+      {% endif %}
+         
+  
+      <li><a href="{% url 'webno:list' %}"></span><i class="fa fa-home " aria-hidden="true"> <l>Home</l></i></a></li>
+
+     
+
+
+    </ul>
+  </div>
+</nav>
+ 
+{% endblock navbar %}
+<div class="jumbotron">
+  <h1>Devblog</h1>
+  <p>a blog for developer created by django</p>
+</div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+       {% block messages%}
+            {% if messages %}
+            <ul class="messages">
+                {% for message in messages %}
+                <li{% if message.tags %} class="{{ message.tags }}"{% endif %}>{{ message }}</li>
+                {% endfor %}
+            </ul>
+            {% endif %}
+       {% endblock messages %}
+
+
+          
+
+       {% block search_result%}
+          {% for result in search_result %}
+            <div class=" pull-center">
+                  <p class="body">
+                            <h2>
+                                <a href="{{result.get_absolute_url}}">    
+                                    {{result.title}}
+                                </a>  
+                            </h2>
+                            <small>
+                              {{result.updatetime}} | Written by : {{result.owner}}
+                            </small>
+      
+
+             <br>
+
+             <p>
+                {{result.content|safe|truncatechars_html:100}}
+             </p>
+               {% if request.user.is_superuser or request.user.is_staff or  request.user.is_authenticated %}
+
+                   <a href="{% url 'webno:edit' id=result.id %}"> edit </a>
+                          <br>
+                   <a href="{% url 'webno:delete' id=result.id %}"> delete </a>
+                {% endif %}
+              <hr>
+
+
+            </div>
+          {% endfor  %}
+
+       {% endblock search_result %}
+  <div class="row"> 
+      <div class="col-lg-9">
+      <div class="container">
+        
+             {% block content%}
+
+             {% endblock content %}
+        
+      </div>
+      </div>
+      <div class="col-lg-3">
+      <div id="sidebar">
+      <h2>My blog</h2>
+      <p>This is my blog. I've written {% total_posts %} posts so far.</p>
+
+      <h3><i class="fa fa-list-alt" > Latest posts</i></h3>
+
+      <p>{% show_latest_posts 6 %}</p>
+<hr>
+      <h4><i class="fa fa-rss" aria-hidden="true"> <a href="{% url "webno:post_feed" %}">Subscribe to my RSS feed</a></i></h4>
+      </div>
+      </div>
+  </div> 
+</div>
+
+
+<center>
+
+<ul class="pagination ">
+    
+        {% if posts.has_previous %}
+            <li><a href="?page={{ posts.previous_page_number }}">previous</a></li>
+        {% endif %}
+
+        <li><span class="current">
+            Page {{ posts.number }} of {{ posts.paginator.num_pages }}
+        </span></li>
+
+        {% if posts.has_next %}
+            <li><a href="?page={{ posts.next_page_number }}">next</a></li>
+        {% endif %}
+
+</ul>
+</center>
+
+
+
+<footer class="footer-basic-centered">
+
+      <p class="footer-company-motto"><i class="fa fa-envelope-o" aria-hidden="true"> : aliniajavad@yahoo.com</i></p>
+      <br>
+      <a href="http://telegram.me/mj_alinia"> <i class="fa fa-telegram fa-2x" aria-hidden="true"></i></a>
+      <a href="https://www.instagram.com/mohammad_._javad/?hl=en"><i class="fa fa-instagram fa-2x" aria-hidden="true"></i></a>
+
+<br>
+      <br>
+      <p class="footer-company-name">Copyright© 2017 Design:DevBlog </p>
+      
+
+</footer>
+</div>
+
+{% block js%}
+
+    <!-- jQuery library -->
+    <script src="{% static 'js/jquery.min.js' %}"></script>
+
+    <script type="text/javascript">
+  
+
+  
+    $(document).on('click', '.confirm-delete', function(){
+        return confirm('Are you sure you want to delete this?');
+    })
+    
+    </script>
+    <!-- Latest compiled JavaScript -->
+    <script src="{% static 'js/bootstrap.min.js' %}"></script>
+    <script type="text/javascript">
+      
+
+
+ 
+
+
+ 
+ {% endblock js %}
+
+
+</body>
+
+
+</html>
