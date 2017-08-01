@@ -208,6 +208,19 @@
     })
     
     </script>
+    <script type="text/javascript">
+       function teleShare() {
+       var r = confirm("Share the address of this page to Telegram?");
+           
+       if (r == true) {
+       window.location.replace('https://telegram.me/share/url?text=Custom+Text&url='+window.location.href)
+       }
+       }
+    </script>
+
+
+
+
     <!-- Latest compiled JavaScript -->
     <script src="{% static 'js/bootstrap.min.js' %}"></script>
     <script type="text/javascript">
